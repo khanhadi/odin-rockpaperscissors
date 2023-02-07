@@ -1,5 +1,3 @@
-console.log("Hello World!");
-
 /*
 
 (1) - Rock
@@ -51,8 +49,36 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-let playerSelection = prompt("Rock, Paper or Scissors?");
-let computerSelection = getComputerChoice();
+// game function plays 5 rounds of rock paper scissors
+function game() {
+  let scorePlayer = 0;
+  let scoreComp = 0;
 
-// play a round of rock paper scissors
-console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Rock, Paper or Scissors?");
+    let computerSelection = getComputerChoice();
+
+    // play a round of rock paper scissors
+    let outcome = playRound(playerSelection.toLowerCase(), computerSelection);
+    console.log(outcome);
+
+    // keep track of score
+    if (outcome.charAt(4) === "w") {
+      scorePlayer++;
+    } else {
+      scoreComp++;
+    }
+
+    console.log(`Player: ${scorePlayer} Computer: ${scoreComp}`);
+  }
+
+  if (scorePlayer > scoreComp) {
+    console.log("Player wins the game!");
+  } else if (scorePlayer === scoreComp) {
+    console.log("Game Tied!");
+  } else {
+    console.log("Computer wins the game!");
+  }
+}
+
+game();
