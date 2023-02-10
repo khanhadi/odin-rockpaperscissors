@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+    background-color: #20262E;
+    color: #E9E8E8;
+    /* pc #38b776  */
+    /* cc #b62f2f */
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.scene {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-game {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.game {
+    gap: 30px;
+}
+
+.sidebar {
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.sidebar>h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.weapons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.weapon {
+    width: 150px;
+    height: 150px;
+    background-color: #E9E8E8;
+    border-radius: 10px;
+    display: flex;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    width: 100px;
+    background-color: #E9E8E8;
+    border-radius: 50%;
+}
