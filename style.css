@@ -11,8 +11,28 @@ body {
     font-weight: 400;
     background-color: #20262E;
     color: #E9E8E8;
-    /* pc #38b776  */
-    /* cc #b62f2f */
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+.btn {
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 30px;
+    background-color: #E9E8E8;
+    color: #0e0e10;
+    padding: 0 20px;
+}
+
+.btn:hover {
+    background-color: #E9E8E8e5;
 }
 
 .bold {
@@ -28,6 +48,11 @@ body {
     text-align: center;
 }
 
+.start,
+.end {
+    gap: 20px;
+}
+
 .main-game {
     display: flex;
     justify-content: center;
@@ -36,6 +61,16 @@ body {
 
 .game {
     gap: 40px;
+}
+
+.github {
+    all: unset;
+    display: flex;
+    cursor: pointer;
+    font-family: 'Jetbrains Mono', sans-serif;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .sidebar {

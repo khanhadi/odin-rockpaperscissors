@@ -15,10 +15,28 @@ start();
 function start() {
 	const startButton = document.querySelector('.begin');
 
-	gameScreen.classList.toggle('hidden');
-	endScreen.classList.toggle('hidden');
+	gameScreen.classList.add('hidden');
+	endScreen.classList.add('hidden');
 
 	startButton.addEventListener('click', game);
+}
+
+function end(winMessage, scoreComp, scorePlayer) {
+	const endText = document.querySelector('.end-text');
+	endText.textContent = winMessage;
+
+	const scoreText = document.querySelector('.end-score');
+	scoreText.innerHTML = `Robo: ${scoreComp} <br> You: ${scorePlayer}`;
+
+	setTimeout(() => {
+		gameScreen.classList.add('hidden');
+		endScreen.classList.remove('hidden');
+	}, 1250); // wait 1250ms before game ends
+
+	const resetButton = document.querySelector('.reset');
+	resetButton.addEventListener('click', () => {
+		location.reload();
+	});
 }
 
 // generate random number between 1 and max
@@ -63,13 +81,15 @@ function playRound(playerSelection, computerSelection) {
 // main game function that plays rock paper scissors first to 5!
 // switches scene to game
 function game() {
+	let hasGameEnded = false;
 	let scorePlayer = 0;
 	let scoreComp = 0;
 
-	startScreen.classList.toggle('hidden');
-	gameScreen.classList.toggle('hidden');
+	startScreen.classList.add('hidden');
+	gameScreen.classList.remove('hidden');
 
 	const playerButtons = document.querySelectorAll('.player');
+	const gameScore = document.querySelector('.score');
 
 	playerButtons.forEach((button) => {
 		button.addEventListener('click', (e) => {
@@ -83,23 +103,29 @@ function game() {
 			setTimeout(() => {
 				compButton.classList.remove('selected');
 				button.classList.remove('selected');
-			}, 500);
+			}, 350);
 
 			console.log(outcome);
 
 			// keep track of score
 			if (outcome === 'You win!') {
-				scorePlayer++;
-				console.log(`Player: ${scorePlayer} Computer: ${scoreComp}`);
+				if (scorePlayer < 5 && !hasGameEnded) {
+					scorePlayer++;
+				}
+				gameScore.innerHTML = `Robo: ${scoreComp} <br> You: ${scorePlayer}`;
 			} else if (outcome === 'You lose!') {
-				scoreComp++;
-				console.log(`Player: ${scorePlayer} Computer: ${scoreComp}`);
+				if (scoreComp < 5 && !hasGameEnded) {
+					scoreComp++;
+				}
+				gameScore.innerHTML = `Robo: ${scoreComp} <br> You: ${scorePlayer}`;
 			}
 
-			if (scorePlayer == 5) {
-				console.log('Player wins the game!');
-			} else if (scoreComp == 5) {
-				console.log('Computer Wins the game!');
+			if (scorePlayer === 5) {
+				hasGameEnded = true;
+				end('You won the game!', scoreComp, scorePlayer);
+			} else if (scoreComp === 5) {
+				hasGameEnded = true;
+				end('Robo wins the game!', scoreComp, scorePlayer);
 			}
 		});
 	});
