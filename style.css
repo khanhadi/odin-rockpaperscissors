@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -31,7 +35,7 @@ body {
 }
 
 .game {
-    gap: 30px;
+    gap: 40px;
 }
 
 .sidebar {
@@ -56,7 +60,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 50px;
 }
 
 .weapon {
@@ -66,6 +70,20 @@ body {
     border-radius: 10px;
     display: flex;
 }
+
+
+.selected {
+    border: 3px solid #1a75b6;
+    transform: scale(120%);
+    transition-duration: 0.1s;
+}
+
+.weapon.player:hover {
+    background-color: #e9e8e8e5;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
 
 .metrics {
     display: flex;

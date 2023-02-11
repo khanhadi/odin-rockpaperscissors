@@ -1,8 +1,4 @@
 /*
-(1) - Rock
-(2) - Paper
-(3) - Scissors
-
 Rock beats Scissors
 Paper beats Rock
 Scissors beats Paper
@@ -77,7 +73,17 @@ function game() {
 
 	playerButtons.forEach((button) => {
 		button.addEventListener('click', (e) => {
-			let outcome = playRound(e.target.id, getComputerChoice());
+			const computerChoice = getComputerChoice();
+			let outcome = playRound(e.target.id, computerChoice);
+
+			const compButton = document.querySelector('.' + computerChoice);
+
+			compButton.classList.add('selected');
+			button.classList.add('selected');
+			setTimeout(() => {
+				compButton.classList.remove('selected');
+				button.classList.remove('selected');
+			}, 500);
 
 			console.log(outcome);
 
